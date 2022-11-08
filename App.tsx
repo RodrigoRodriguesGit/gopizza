@@ -11,6 +11,7 @@ export default function App() {
   })
   if (!fontsLoaded){
     return <AppLoading />
+    //Teste
   }   
    
   //return (
