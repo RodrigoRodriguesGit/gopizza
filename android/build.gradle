@@ -44,5 +44,14 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://www.jitpack.io' }
+
+        buildscript {
+            dependencies {
+                // ... outras dependencias
+            classpath 'com.google.gms:google-services:4.3.10'
+            // Adicionar a linha a cima --- /\
+            }
+        }        
+        
     }
 }
