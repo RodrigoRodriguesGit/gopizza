@@ -14,7 +14,7 @@ export const Container = styled(RectButton)<ContainerProps>`
     border-radius: 12px;
     justify-content: center;
     align-items: center;
-    background-color: ${({ theme, type }) => type==='primary' ? theme.COLORS.PRIMARY_900 : theme.COLORS.PRIMARY_800 };
+    background-color: ${({ theme, type }) => type==='primary' ? theme.COLORS.SUCCESS_900 : theme.COLORS.PRIMARY_800 };
 `
 
 export const Title = styled.Text` 

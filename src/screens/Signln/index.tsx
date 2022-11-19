@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "./styles";
 
 import { Input } from "@components/input";
+import { Button } from "@components/button";
 
 export function SignIn(){
 
@@ -20,6 +21,11 @@ export function SignIn(){
             type="secundary"
             secureTextEntry
           />
+
+        <Button
+          title="Entrar"
+          type="secundary"
+        />
 
         </Container>
     )
