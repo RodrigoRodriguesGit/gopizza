@@ -1,5 +1,6 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 // Teste de Commit!
 
@@ -10,4 +11,48 @@ export const Container = styled(LinearGradient).attrs(({ theme }) => ({
 }))`
     flex: 1;
     justify-content: center
-` 
+`;
+
+export const Content = styled.ScrollView.attrs({
+    showsVerticalScrollIndicator: false,
+    contentContainerStyle: {
+        paddingBottom: getBottomSpace() + 48
+    },
+})`
+    width: 100px;
+    padding: 0 32px;
+`
+
+export const Title = styled.Text`
+    font-size: 32px;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  
+    ${({ theme }) => css`
+        font-family: ${theme.FONTS.TITLE};
+        color: ${theme.COLORS.TITLE};
+    `}
+`
+// Componente para exibir a imagem
+export const Band = styled.Image.attrs({
+    resizeMode: 'contain'
+})`
+    height: 340px;   
+    margin-top:  64px;
+    margin-bottom: 32px;
+`
+export const ForgotPasswordButton = styled.TouchableOpacity`
+    align-self: flex-end;
+    margin-bottom: 20px;
+`;
+
+export const ForgotPasswordLabel = styled.Text`
+    font-size: 14px;
+
+    ${({ theme }) => css`
+        font-family: ${theme.FONTS.TEXT };
+        color: ${theme.COLORS.TITLE};
+    ` }
+
+`;
+
