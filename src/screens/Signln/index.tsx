@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import brandImg from '@assets/brand.png'
 import { Input } from "@components/input";
@@ -12,8 +12,19 @@ import {
   ForgotPasswordButton, 
   ForgotPasswordLabel } 
 from "./styles";
+import { useAuth } from '@hooks/auth'
 
 export function SignIn(){
+    
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const  { signIn, isLogging} = useAuth();
+
+    function HandleSignIn() {
+      signIn(email, password)
+    }
+
     return(
 
       <Container>
@@ -28,12 +39,14 @@ export function SignIn(){
                   type="secundary"
                   autoCorrect={false}
                   autoCapitalize="none"
+                  onChangeText={setEmail}
                 />
 
               <Input 
                   placeholder="Senha"
                   type="secundary"
                   secureTextEntry
+                  onChangeText={setPassword}
                 />
 
               <ForgotPasswordButton>
@@ -45,6 +58,8 @@ export function SignIn(){
               <Button
                 title="Entrar"
                 type="secundary"
+                onPress={HandleSignIn}
+                isLoading={isLogging}
               />
 
           </Content>
