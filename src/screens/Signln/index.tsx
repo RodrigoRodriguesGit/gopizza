@@ -1,74 +1,69 @@
 import React, { useState } from "react";
 import { KeyboardAvoidingView, Platform } from "react-native";
-import brandImg from '@assets/brand.png'
+import brandImg from "@assets/brand.png";
 import { Input } from "@components/input";
 import { Button } from "@components/button";
 
 import {
-  Container, 
-  Content, 
-  Title, 
-  Band, 
-  ForgotPasswordButton, 
-  ForgotPasswordLabel } 
-from "./styles";
-import { useAuth } from '@hooks/auth'
+  Container,
+  Content,
+  Title,
+  Band,
+  ForgotPasswordButton,
+  ForgotPasswordLabel,
+} from "./styles";
+import { useAuth } from "@hooks/auth";
 
-export function SignIn(){
-    
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const  { signIn, isLogging, forgotPassword} = useAuth();
+  const { signIn, isLogging, forgotPassword } = useAuth();
 
-    function HandleSignIn() {
-      signIn(email, password)
-    }
-    
-    function HandleforgotPassword() {
-      forgotPassword(email)
-    }
-    return(
+  function HandleSignIn() {
+    signIn(email, password);
+  }
 
-      <Container>
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? "padding" : undefined }>
-          <Content>
-              <Band source={brandImg}></Band>
+  function HandleforgotPassword() {
+    forgotPassword(email);
+  }
+  return (
+    <Container>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : undefined}
+      >
+        <Content>
+          <Band source={brandImg}></Band>
 
-              <Title>Login</Title>      
-              
-              <Input 
-                  placeholder="E-mail"
-                  type="secundary"
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  onChangeText={setEmail}
-                />
+          <Title>Login</Title>
 
-              <Input 
-                  placeholder="Senha"
-                  type="secundary"
-                  secureTextEntry
-                  onChangeText={setPassword}
-                />
+          <Input
+            placeholder="E-mail"
+            type="secundary"
+            autoCorrect={false}
+            autoCapitalize="none"
+            onChangeText={setEmail}
+          />
 
-              <ForgotPasswordButton onPress={HandleforgotPassword}>
-                <ForgotPasswordLabel>
-                  Esqueci minha senhg
-                </ForgotPasswordLabel>
-              </ForgotPasswordButton>
+          <Input
+            placeholder="Senha"
+            type="secundary"
+            secureTextEntry
+            onChangeText={setPassword}
+          />
 
-              <Button
-                title="Entrar"
-                type="secundary"
-                onPress={HandleSignIn}
-                isLoading={isLogging}
-              />
+          <ForgotPasswordButton onPress={HandleforgotPassword}>
+            <ForgotPasswordLabel>Esqueci minha senhg</ForgotPasswordLabel>
+          </ForgotPasswordButton>
 
-          </Content>
-        </KeyboardAvoidingView>
-      </Container>
-
-    )
-
+          <Button
+            title="Entrar"
+            type="secundary"
+            onPress={HandleSignIn}
+            isLoading={isLogging}
+          />
+        </Content>
+      </KeyboardAvoidingView>
+    </Container>
+  );
 }
